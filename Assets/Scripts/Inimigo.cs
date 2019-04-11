@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public GameObject explosaoPrefab;
+    private PlayerController _playerController;
+    public Transform arma;
+    public GameObject explosaoPrefab, tiroPrefab;
     public GameObject[] loot;
+   
+
+    private void Start()
+    {
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+    }
+
+    private void Update()
+    {
+        arma.right = _playerController.transform.position - transform.position;
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject temp = Instantiate(tiroPrefab, arma.position, arma.localRotation);
+            temp.GetComponent<Rigidbody2D>().velocity = arma.right * 3;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

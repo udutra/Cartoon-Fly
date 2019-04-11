@@ -413,12 +413,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffcb26ea2980874d894f87e0371d7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arma: {fileID: 1688533641}
   explosaoPrefab: {fileID: 7049392915933012217, guid: 88f0253654f2e6748a7e5d99d5e55b10,
     type: 3}
+  tiroPrefab: {fileID: 5689752361450464891, guid: b1a3a8872bfdcd54589a6e323907a311,
+    type: 3}
   loot:
-  - {fileID: 6188970637814167758, guid: 282fab6ac403a694c987c70af107449e, type: 3}
   - {fileID: 4529794672506326878, guid: 31546562a87ff734ab0eced8cea8b4f2, type: 3}
   - {fileID: 3191603282198297611, guid: d77c1df730d24ba49ad2dd5dd3d5a1bd, type: 3}
+  - {fileID: 6188970637814167758, guid: 282fab6ac403a694c987c70af107449e, type: 3}
 --- !u!61 &1320057717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -504,9 +507,40 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1688533641}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1688533640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688533641}
+  m_Layer: 0
+  m_Name: Arma
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1688533641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688533640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.037, y: 0.013, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1320057719}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1750687006
 GameObject:
