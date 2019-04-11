@@ -259,7 +259,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1324347883
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2b9f04dd237ede145958f9a70392e636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -422,6 +422,7 @@ MonoBehaviour:
   - {fileID: 4529794672506326878, guid: 31546562a87ff734ab0eced8cea8b4f2, type: 3}
   - {fileID: 3191603282198297611, guid: d77c1df730d24ba49ad2dd5dd3d5a1bd, type: 3}
   - {fileID: 6188970637814167758, guid: 282fab6ac403a694c987c70af107449e, type: 3}
+  delayEntreTiros: 0
 --- !u!61 &1320057717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -435,7 +436,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0604001, y: 0.3321999}
+  m_Offset: {x: 0.04038626, y: 0.34220684}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -446,7 +447,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3412, y: 0.9756571}
+  m_Size: {x: 1.3812276, y: 0.99567103}
   m_EdgeRadius: 0
 --- !u!212 &1320057718
 SpriteRenderer:
@@ -483,9 +484,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1324347883
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c618d4ed409148e42bcc39411d8eac6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -536,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688533640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.037, y: 0.013, z: 0}
+  m_LocalPosition: {x: 0.061, y: 0.221, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1320057719}
@@ -629,7 +630,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1324347883
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e49747ed12e78ef4f91c6346286e61ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7607843}
