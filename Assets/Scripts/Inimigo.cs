@@ -8,7 +8,7 @@ public class Inimigo : MonoBehaviour
     public Transform arma;
     public GameObject explosaoPrefab, tiroPrefab;
     public GameObject[] loot;
-    public float delayEntreTiros;
+    public float[] delayEntreTiros;
    
 
     private void Start()
@@ -66,7 +66,7 @@ public class Inimigo : MonoBehaviour
 
     private IEnumerator Atirar()
     {
-        yield return new WaitForSeconds(delayEntreTiros);
+        yield return new WaitForSeconds(Random.Range(delayEntreTiros[0], delayEntreTiros[1]));
         Shot();
         StartCoroutine("Atirar");
     }
