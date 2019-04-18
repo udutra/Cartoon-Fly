@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
 
     [Header("Limite Lateral Camera")]
     public Camera mainCamera;
-    public Transform limiteCamEsquerdo, limiteCamDireito;
-    public float velocidadeLateralCamera;
+    public Transform posFinalCamera, limiteCamEsquerdo, limiteCamDireito;
+    public float velocidadeFase, velocidadeLateralCamera;
 
     private void Start()
     {
@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 
     private void LateUpdate()
     {
+        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(mainCamera.transform.position.x, posFinalCamera.position.y, -10), velocidadeFase * Time.deltaTime);
         ControlePosicaoCamera();
     }
 
