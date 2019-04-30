@@ -2866,6 +2866,7 @@ GameObject:
   - component: {fileID: 1421907710}
   - component: {fileID: 1421907712}
   - component: {fileID: 1421907713}
+  - component: {fileID: 1421907709}
   m_Layer: 0
   m_Name: Enemy02 (1)
   m_TagString: Inimigo
@@ -2873,6 +2874,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1421907709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421907708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632b175cdef227242bfd300490fbf4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movimento: 0
 --- !u!212 &1421907710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2981,9 +2995,6 @@ MonoBehaviour:
   isHorizontal: 0
   isEsquerda: 0
   isEmCima: 0
-  incrementado: 0
-  rotacaoZ: 0
-  isCurva: 0
 --- !u!1 &1429109373
 GameObject:
   m_ObjectHideFlags: 0
