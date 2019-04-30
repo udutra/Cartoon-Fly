@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IAInimigoA : MonoBehaviour
+public class IAInimigo : MonoBehaviour
 {
     public float velocidadeMovimento, pontoInicialCurva, grausCurva, incrementar;
     private float incrementado, rotacaoZ;

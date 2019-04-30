@@ -2041,8 +2041,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1015549852}
   - component: {fileID: 1015549851}
-  - component: {fileID: 1015549850}
   - component: {fileID: 1015549853}
+  - component: {fileID: 1015549850}
   m_Layer: 0
   m_Name: Enemy02
   m_TagString: Inimigo
@@ -2065,7 +2065,7 @@ MonoBehaviour:
   velocidadeMovimento: 3
   pontoInicialCurva: -1
   grausCurva: 45
-  incrementar: -0.7
+  incrementar: 0.7
   isCurva: 0
 --- !u!212 &1015549851
 SpriteRenderer:
@@ -2864,8 +2864,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1421907711}
   - component: {fileID: 1421907710}
-  - component: {fileID: 1421907709}
   - component: {fileID: 1421907712}
+  - component: {fileID: 1421907713}
   m_Layer: 0
   m_Name: Enemy02 (1)
   m_TagString: Inimigo
@@ -2873,23 +2873,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1421907709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421907708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec854d7daee9d8545b699ea76a6a87bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadeMovimento: 3
-  pontoInicialCurva: -1
-  grausCurva: 45
-  incrementar: 0.7
-  isCurva: 0
 --- !u!212 &1421907710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2947,7 +2930,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421907708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 3.23, z: 0}
+  m_LocalPosition: {x: 1.63, y: 3.23, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2979,6 +2962,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6649919, y: 1.1779377}
   m_EdgeRadius: 0
+--- !u!114 &1421907713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421907708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b85b59fe7d54b5478ddb7017b6a05af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadeMovimento: 3
+  pontoInicialCurva: 0
+  grausCurva: 45
+  incrementar: 0.7
+  isHorizontal: 0
+  isEsquerda: 0
+  isEmCima: 0
+  incrementado: 0
+  rotacaoZ: 0
+  isCurva: 0
 --- !u!1 &1429109373
 GameObject:
   m_ObjectHideFlags: 0
