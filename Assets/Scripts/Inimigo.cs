@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    private PlayerController _playerController;
+    private GameController _GameController;
+    //private PlayerController _playerController;
     public Transform arma;
-    public GameObject explosaoPrefab, tiroPrefab;
+    public GameObject explosaoPrefab;
     public GameObject[] loot;
     public float[] delayEntreTiros;
-   
+    public int idBullet;
+    public TagBullets tagTiro;
 
     private void Start()
     {
-        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        //_playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         StartCoroutine("Atirar");
     }
 
@@ -73,8 +76,9 @@ public class Inimigo : MonoBehaviour
 
     private void Shot()
     {
-        arma.right = _playerController.transform.position - transform.position;
-        GameObject temp = Instantiate(tiroPrefab, arma.position, arma.localRotation);
+        arma.right = _GameController._PlayerController.transform.position - transform.position;
+        GameObject temp = Instantiate(_GameController.bulletPrefab[idBullet], arma.position, arma.localRotation);
+        temp.transform.tag = _GameController.AplicarTag(tagTiro);
         temp.GetComponent<Rigidbody2D>().velocity = arma.right * 3;
     }
 }

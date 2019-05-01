@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerShot
   - Inimigo
+  - InimigoShot
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cenario
+    uniqueID: 3157662781
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

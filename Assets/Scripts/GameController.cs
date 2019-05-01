@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public PlayerController _PlayerController;
+    public bool isAlivePlayer;
+    public int vidasExtra;
+    public Transform spawnPlayer;
 
     [Header("Limite de Movimento")]
     public Transform limiteSuperior;
@@ -15,20 +18,30 @@ public class GameController : MonoBehaviour
     public Transform posFinalCamera, limiteCamEsquerdo, limiteCamDireito;
     public float velocidadeFase, velocidadeLateralCamera;
 
+    [Header("Prefabs")]
+    public GameObject[] bulletPrefab;
+    public GameObject explosaoPrefab;
+    public GameObject playerPrefab;
+
+
+
     private void Start()
     {
-        _PlayerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        //_PlayerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
     }
 
     private void Update()
     {
-        LimitarMovimentoPlayer();
+        if (isAlivePlayer)
+        {
+            LimitarMovimentoPlayer();
+        }
     }
 
     private void LateUpdate()
     {
-        mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(mainCamera.transform.position.x, posFinalCamera.position.y, -10), velocidadeFase * Time.deltaTime);
-        ControlePosicaoCamera();
+        /*mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, new Vector3(mainCamera.transform.position.x, posFinalCamera.position.y, -10), velocidadeFase * Time.deltaTime);
+        ControlePosicaoCamera();*/
     }
 
     private void LimitarMovimentoPlayer()
@@ -78,5 +91,40 @@ public class GameController : MonoBehaviour
     {
         Vector3 posicaoDestinoCamera = new Vector3(_PlayerController.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, posicaoDestinoCamera, velocidadeLateralCamera * Time.deltaTime);
+    }
+
+    public string AplicarTag(TagBullets tag)
+    {
+        string retorno = null;
+
+        switch (tag)
+        {
+            case TagBullets.Player:
+                retorno = "PlayerShot";
+                break;
+            case TagBullets.Inimigo:
+                retorno = "InimigoShot";
+                break;
+            default:
+                break;
+        }
+        return retorno;
+    }
+
+    public void HitPlayer()
+    {
+        isAlivePlayer = false;
+        GameObject temp = Instantiate(explosaoPrefab, _PlayerController.transform.position, explosaoPrefab.transform.localRotation);
+        Destroy(_PlayerController.gameObject);
+        vidasExtra -= 1;
+
+        if (vidasExtra >= 0)
+        {
+            Instantiate(playerPrefab, spawnPlayer.transform.position, spawnPlayer.transform.localRotation);
+        }
+        else
+        {
+            Debug.LogError("Acabou");
+        }
     }
 }

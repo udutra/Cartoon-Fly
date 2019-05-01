@@ -17,6 +17,12 @@ public class TrajetoInimigo : MonoBehaviour
 
     private void Update()
     {
+        if(naveInimiga == null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         if (movimentar == true)
         {
             naveInimiga.localPosition = Vector3.MoveTowards(naveInimiga.localPosition, checkPoints[idCheckPoints].position, velocidadeMovimento * Time.deltaTime);
