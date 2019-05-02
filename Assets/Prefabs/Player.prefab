@@ -144,11 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f988f5824fdf0b94ea4372c6779b3691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 5
+  fumacaSr: {fileID: 3708937212599211312}
   armaPosition: {fileID: 3708937212033180360}
-  velocidadeTiro: 5
-  idBullet: 0
+  corInvensivel: {r: 1, g: 1, b: 1, a: 0.6509804}
   tagTiro: 0
+  idBullet: 0
+  velocidade: 5
+  velocidadeTiro: 5
+  delayPiscar: 0.3
 --- !u!1 &3708937212033180361
 GameObject:
   m_ObjectHideFlags: 0

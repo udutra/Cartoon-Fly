@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Configurações do PLayer")]
     public PlayerController _PlayerController;
+    public Transform spawnPlayer;
     public bool isAlivePlayer;
     public int vidasExtra;
-    public Transform spawnPlayer;
+    public float delaySpawnPlayer, tempoInvencivel;
 
     [Header("Limite de Movimento")]
     public Transform limiteSuperior;
@@ -22,8 +24,6 @@ public class GameController : MonoBehaviour
     public GameObject[] bulletPrefab;
     public GameObject explosaoPrefab;
     public GameObject playerPrefab;
-
-
 
     private void Start()
     {
@@ -120,11 +120,19 @@ public class GameController : MonoBehaviour
 
         if (vidasExtra >= 0)
         {
-            Instantiate(playerPrefab, spawnPlayer.transform.position, spawnPlayer.transform.localRotation);
+            StartCoroutine("SpawnPlayer");
         }
         else
         {
             Debug.LogError("Acabou");
         }
+    }
+
+    private IEnumerator SpawnPlayer()
+    {
+        yield return new WaitForSeconds(delaySpawnPlayer);
+        GameObject temp = Instantiate(playerPrefab, spawnPlayer.transform.position, spawnPlayer.transform.localRotation);
+        yield return new WaitForEndOfFrame();
+        _PlayerController.StartCoroutine("Invencivel");
     }
 }
