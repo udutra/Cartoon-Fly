@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
         playerSr.color = corInvensivel;
         fumacaSr.color = corInvensivel;
         StartCoroutine("PiscarPlayer");
-
         yield return new WaitForSeconds(_GameControoler.tempoInvencivel);
         col.enabled = true;
         playerSr.color = Color.white;

@@ -32,7 +32,7 @@ public class Inimigo : MonoBehaviour
             case "PlayerShot":
                 {
                     Destroy(collision.gameObject); //Destroi o tiro
-                    GameObject temp = Instantiate(explosaoPrefab, transform.position, transform.localRotation);
+                    GameObject temp = Instantiate(_GameController.explosaoPrefab, transform.position, transform.localRotation);
                     Destroy(temp, 0.5f); //Destroi a animação da explosão
                     Loot();
                     Destroy(this.gameObject);  //Destroi a nave inimiga
