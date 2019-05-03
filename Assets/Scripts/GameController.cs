@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public float tamanhoOriginal, velocidadeDecolagem, velocidadeAtual;
     public Transform posicaoInicialNave, posicaoDecolagem;
     public bool isDecolar;
+    public Color corInicialFumaça, corFinalFumaça;
 
     [Header("Configurações do PLayer")]
     public PlayerController _PlayerController;
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
                 StartCoroutine("Subir");
                 currentState = GameState.GAMEPLAY;
             }
+            _PlayerController.fumacaSr.color = Color.Lerp(corInicialFumaça, corFinalFumaça, 0.1f);
         }
     }
 
@@ -131,7 +133,8 @@ public class GameController : MonoBehaviour
 
     private IEnumerator IntroFase()
     {
-        _PlayerController.fumacaSr.enabled = false;
+        _PlayerController.fumacaSr.color = corInicialFumaça;
+        _PlayerController.sombra.SetActive(false);
         _PlayerController.transform.localScale = new Vector3(tamanhoInicialNave, tamanhoInicialNave, tamanhoInicialNave);
         _PlayerController.transform.position = posicaoInicialNave.position;
 
@@ -146,9 +149,12 @@ public class GameController : MonoBehaviour
 
     private IEnumerator Subir()
     {
+        _PlayerController.sombra.SetActive(true);
         for (float s = tamanhoInicialNave; s < tamanhoOriginal; s+=0.025f)
         {
             _PlayerController.transform.localScale = new Vector3(s,s,s);
+            _PlayerController.sombra.transform.localScale = new Vector3(s, s, s);
+            _PlayerController.fumacaSr.color = Color.Lerp(_PlayerController.fumacaSr.color, corFinalFumaça, 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
         print("Altura Máxima");

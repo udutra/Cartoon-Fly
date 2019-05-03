@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSr;
     public SpriteRenderer fumacaSr;
-    public Transform armaPosition, sombra;
+    public Transform armaPosition;
     public Color corInvensivel;
     public TagBullets tagTiro;
+    public GameObject sombra;
     public int idBullet;
     public float velocidade, velocidadeTiro, delayPiscar;
     
