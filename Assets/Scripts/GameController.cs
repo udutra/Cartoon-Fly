@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Configurações do Gamer")]
+    public GameState currentState;
+
+    [Header("Configurações da Intro")]
+    public float tamanhoInicialNave;
+    public float tamanhoOriginal, velocidadeDecolagem, velocidadeAtual;
+    public Transform posicaoInicialNave, posicaoDecolagem;
+    public bool isDecolar;
+
     [Header("Configurações do PLayer")]
     public PlayerController _PlayerController;
     public Transform spawnPlayer;
@@ -21,17 +30,35 @@ public class GameController : MonoBehaviour
     public GameObject explosaoPrefab;
     public GameObject playerPrefab;
 
+    private void Start()
+    {
+        StartCoroutine("IntroFase");
+    }
+
     private void Update()
     {
         if (isAlivePlayer)
         {
             LimitarMovimentoPlayer();
         }
+
+        if (isDecolar && currentState == GameState.INTRO)
+        {
+            _PlayerController.transform.position = Vector3.MoveTowards(_PlayerController.transform.position, posicaoDecolagem.position, velocidadeAtual * Time.deltaTime);
+            if (_PlayerController.transform.position == posicaoDecolagem.position)
+            {
+                StartCoroutine("Subir");
+                currentState = GameState.GAMEPLAY;
+            }
+        }
     }
 
     private void LateUpdate()
     {
-        cenario.position = Vector3.MoveTowards(cenario.position, new Vector3(cenario.position.x, posicaoFinalFase.position.y, 0), velocidadeFase * Time.deltaTime);
+        if (currentState == GameState.GAMEPLAY)
+        {
+            cenario.position = Vector3.MoveTowards(cenario.position, new Vector3(cenario.position.x, posicaoFinalFase.position.y, 0), velocidadeFase * Time.deltaTime);
+        }        
     }
 
     private void LimitarMovimentoPlayer()
@@ -100,5 +127,30 @@ public class GameController : MonoBehaviour
         GameObject temp = Instantiate(playerPrefab, spawnPlayer.transform.position, spawnPlayer.transform.localRotation);
         yield return new WaitForEndOfFrame();
         _PlayerController.StartCoroutine("Invencivel");
+    }
+
+    private IEnumerator IntroFase()
+    {
+        _PlayerController.fumacaSr.enabled = false;
+        _PlayerController.transform.localScale = new Vector3(tamanhoInicialNave, tamanhoInicialNave, tamanhoInicialNave);
+        _PlayerController.transform.position = posicaoInicialNave.position;
+
+        yield return new WaitForSeconds(2);
+        isDecolar = true;
+
+        for (velocidadeAtual = 0;  velocidadeAtual < velocidadeDecolagem; velocidadeAtual+=0.2f)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    private IEnumerator Subir()
+    {
+        for (float s = tamanhoInicialNave; s < tamanhoOriginal; s+=0.025f)
+        {
+            _PlayerController.transform.localScale = new Vector3(s,s,s);
+            yield return new WaitForSeconds(0.1f);
+        }
+        print("Altura Máxima");
     }
 }

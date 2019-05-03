@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSr;
     public SpriteRenderer fumacaSr;
-    public Transform armaPosition;
+    public Transform armaPosition, sombra;
     public Color corInvensivel;
     public TagBullets tagTiro;
     public int idBullet;
@@ -26,14 +26,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        playerRb.velocity = new Vector2(horizontal * velocidade, vertical * velocidade);
-
-        if (Input.GetButtonDown("Fire1"))
+        if (_GameControoler.currentState == GameState.GAMEPLAY)
         {
-            Shot();
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            playerRb.velocity = new Vector2(horizontal * velocidade, vertical * velocidade);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shot();
+            }
         }
     }
 
