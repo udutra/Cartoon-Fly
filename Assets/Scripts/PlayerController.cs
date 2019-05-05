@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             case "InimigoShot":
                 {
                     Destroy(collision.gameObject); //Destroi o tiro
-                    /*GameObject temp = Instantiate(_GameControoler.explosao[0], transform.position, _GameControoler.explosao[0].transform.localRotation);
+                    /*GameObject temp = Instantiate(_GameController.explosao[0], transform.position, _GameController.explosao[0].transform.localRotation);
                     Destroy(temp, 0.5f); //Destroi a animação da explosão
                     //Loot();
                     Destroy(this.gameObject);  //Destroi a nave

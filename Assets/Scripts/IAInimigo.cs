@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IAInimigo : MonoBehaviour
 {
-    private GameController _GameControoler;
+    private GameController _GameController;
     private float incrementado, rotacaoZ;
     public Direcao direcaoMovimento;
 
@@ -18,12 +18,12 @@ public class IAInimigo : MonoBehaviour
 
     public float delayTiro;
 
-    public int idBullet;
+    public int idBullet, pontos;
     public TagBullets tagTiro;
 
     private void Start()
     {
-        _GameControoler = FindObjectOfType(typeof(GameController)) as GameController;
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         rotacaoZ = transform.eulerAngles.z;
     }
 
@@ -64,8 +64,8 @@ public class IAInimigo : MonoBehaviour
 
     private void Atirar()
     {
-        GameObject temp = Instantiate(_GameControoler.bulletPrefab[idBullet], arma.position, transform.localRotation);
-        temp.transform.tag = _GameControoler.AplicarTag(tagTiro);
+        GameObject temp = Instantiate(_GameController.bulletPrefab[idBullet], arma.position, transform.localRotation);
+        temp.transform.tag = _GameController.AplicarTag(tagTiro);
         temp.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * velocidadeTiro;
     }
 
@@ -83,7 +83,8 @@ public class IAInimigo : MonoBehaviour
             case "PlayerShot":
                 {
                     Destroy(collision.gameObject); //Destroi o tiro
-                    GameObject temp = Instantiate(_GameControoler.explosaoPrefab, transform.position, _GameControoler.explosaoPrefab.transform.localRotation);
+                    GameObject temp = Instantiate(_GameController.explosaoPrefab, transform.position, _GameController.explosaoPrefab.transform.localRotation);
+                    _GameController.AddScore(pontos);
                     Destroy(temp, 0.5f); //Destroi a animação da explosão
                     //Loot();
                     Destroy(this.gameObject);  //Destroi a nave inimiga

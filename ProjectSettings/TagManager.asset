@@ -50,3 +50,6 @@ TagManager:
   - name: Primeiro Plano
     uniqueID: 1324347883
     locked: 0
+  - name: UI
+    uniqueID: 919889889
+    locked: 0

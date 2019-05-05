@@ -10,7 +10,7 @@ public class Inimigo : MonoBehaviour
     public GameObject explosaoPrefab;
     public GameObject[] loot;
     public float[] delayEntreTiros;
-    public int idBullet;
+    public int idBullet, pontos;
     public TagBullets tagTiro;
 
     private void Start()
@@ -33,6 +33,7 @@ public class Inimigo : MonoBehaviour
                 {
                     Destroy(collision.gameObject); //Destroi o tiro
                     GameObject temp = Instantiate(_GameController.explosaoPrefab, transform.position, transform.localRotation);
+                    _GameController.AddScore(pontos);
                     Destroy(temp, 0.5f); //Destroi a animação da explosão
                     Loot();
                     Destroy(this.gameObject);  //Destroi a nave inimiga

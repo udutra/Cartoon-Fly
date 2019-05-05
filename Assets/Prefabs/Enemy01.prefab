@@ -192,6 +192,7 @@ MonoBehaviour:
   - 3
   - 6
   idBullet: 1
+  pontos: 5
   tagTiro: 1
 --- !u!1 &8891825640779815970
 GameObject:

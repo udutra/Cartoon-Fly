@@ -131,6 +131,7 @@ MonoBehaviour:
   velocidadeTiro: 6
   delayTiro: 2
   idBullet: 1
+  pontos: 10
   tagTiro: 1
 --- !u!1 &9162125658480014346
 GameObject:

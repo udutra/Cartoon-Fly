@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameController : MonoBehaviour
     public PlayerController _PlayerController;
     public Transform spawnPlayer;
     public bool isAlivePlayer;
-    public int vidasExtra;
+    public int vidasExtra, score;
     public float delaySpawnPlayer, tempoInvencivel;
 
     [Header("Limite de Movimento")]
@@ -31,9 +32,16 @@ public class GameController : MonoBehaviour
     public GameObject explosaoPrefab;
     public GameObject playerPrefab;
 
+    [Header("User Interface")]
+    public Text txtScore;
+    public Text txtVidaExtra;
+
+
     private void Start()
     {
         StartCoroutine("IntroFase");
+        txtScore.text = "0";
+        txtVidaExtra.text = "x" + vidasExtra.ToString();
     }
 
     private void Update()
@@ -112,6 +120,7 @@ public class GameController : MonoBehaviour
         GameObject temp = Instantiate(explosaoPrefab, _PlayerController.transform.position, explosaoPrefab.transform.localRotation);
         Destroy(_PlayerController.gameObject);
         vidasExtra -= 1;
+        
 
         if (vidasExtra >= 0)
         {
@@ -121,6 +130,11 @@ public class GameController : MonoBehaviour
         {
             Debug.LogError("Acabou");
         }
+        if(vidasExtra < 0)
+        {
+            vidasExtra = 0;
+        }
+        txtVidaExtra.text = "x" + vidasExtra.ToString();
     }
 
     private IEnumerator SpawnPlayer()
@@ -158,5 +172,11 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         print("Altura Máxima");
+    }
+
+    public void AddScore(int pontos)
+    {
+        score += pontos;
+        txtScore.text = score.ToString();
     }
 }

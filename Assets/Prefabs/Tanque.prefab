@@ -154,5 +154,6 @@ MonoBehaviour:
   arma: {fileID: 4012850476013117165}
   tagTiro: 1
   idBullet: 2
+  pontos: 15
   delayTiro: 3.5
   velocidadeTiro: 3

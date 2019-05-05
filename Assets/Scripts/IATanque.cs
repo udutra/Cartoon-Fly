@@ -7,7 +7,7 @@ public class IATanque : MonoBehaviour
     private GameController _GameController;
     public Transform arma;
     public TagBullets tagTiro;
-    public int idBullet;
+    public int idBullet, pontos;
     public float delayTiro, velocidadeTiro;
     
     private void Start()
@@ -52,6 +52,7 @@ public class IATanque : MonoBehaviour
                     
                     GameObject temp = Instantiate(_GameController.explosaoPrefab, transform.position, transform.localRotation);
                     temp.transform.parent = _GameController.cenario;
+                    _GameController.AddScore(pontos);
                     Destroy(collision.gameObject); //Destroi o tiro
                     Destroy(this.gameObject);  //Destroi a nave inimiga
                     break;
