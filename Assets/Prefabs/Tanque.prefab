@@ -155,5 +155,5 @@ MonoBehaviour:
   tagTiro: 1
   idBullet: 2
   pontos: 15
-  delayTiro: 3.5
+  delayTiro: 3
   velocidadeTiro: 3

@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     [Header("Configurações do Gamer")]
     public GameState currentState;
+    public GameObject ativarInimigos;
 
     [Header("Configurações da Intro")]
     public float tamanhoInicialNave;
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         StartCoroutine("IntroFase");
+        StartCoroutine("AtivarNavesInimigos");
         txtScore.text = "0";
         txtVidaExtra.text = "x" + vidasExtra.ToString();
     }
@@ -178,5 +180,11 @@ public class GameController : MonoBehaviour
     {
         score += pontos;
         txtScore.text = score.ToString();
+    }
+
+    private IEnumerator AtivarNavesInimigos()
+    {
+        yield return new WaitForSeconds(5);
+        ativarInimigos.SetActive(true);
     }
 }
